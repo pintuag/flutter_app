@@ -106,4 +106,58 @@ class _MyHomePageState extends State<MyHomePage> {
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
+  
+  @override
+  Widget build(BuildContext context) {
+    return new Scaffold(
+      appBar: new AppBar(
+        title: new Text("Task App"),
+        elevation: defaultTargetPlatform == TargetPlatform.android?5.0:0.0,
+      ),//App Bar
+        drawer: new Drawer(
+          child: new ListView(
+            children: <Widget>[
+              new UserAccountsDrawerHeader(
+                  accountName: new Text("UNEVA"),
+                  accountEmail: new Text("Uneva@gmail.com"),
+                currentAccountPicture: new CircleAvatar(
+                  backgroundColor: Colors.brown,
+                  child: new Text("U"),
+                ),
+              ),
+              new ListTile(
+                title: new Text("Open Page 1"),
+                trailing: new Icon(Icons.folder_open),
+                onTap: ()
+                    {
+                      Navigator.of(context).pop();
+                      Navigator.of(context).pushNamed("/a");
+//                      Navigator.of(context).push(new MaterialPageRoute(
+//                          builder: (BuildContext context)=>
+//                          new PageOne()));
+                    },
+              ),//listtle
+              new ListTile(
+                title: new Text("Open Page 2"),
+                trailing: new Icon(Icons.folder_open),
+                onTap: ()
+                {
+                  Navigator.of(context).pop();
+                  Navigator.of(context).pushNamed("/b");
+//                  Navigator.of(context).push(new MaterialPageRoute(
+//                      builder: (BuildContext context)=>
+//                      new PageTwo()));
+                },
+              ),//list tile
+              new Divider(),
+              new ListTile(
+                title: new Text("Close Navigation Drawer"),
+                trailing: new Icon(Icons.close),
+                onTap: ()=> Navigator.of(context).pop()
+              ),//list tile
+            ],//widget
+          ),//listview
+        ),//drawer
+
+
 }
